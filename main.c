@@ -24,4 +24,5 @@ int main (int argc, char const* argv[])
 
 
     free_proc_result(attrs);
+    free_split_result (result);
 }
