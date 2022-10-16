@@ -9,3 +9,4 @@ xattr_util
 .idea/
 Makefile
 build/
+main
