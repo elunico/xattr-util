@@ -5,4 +5,4 @@ set(CMAKE_C_STANDARD 11)
 
 set(CMAKE_C_FLAGS "-g")
 
-add_executable(main.c subproc.h subproc.c split.c split.h)
+add_executable(main main.c subproc.h subproc.c split.c split.h)
