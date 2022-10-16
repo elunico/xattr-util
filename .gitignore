@@ -1,0 +1,10 @@
+/target
+cmake_install.cmake
+cmake-build-debug
+venv
+CMakeCache.txt
+CMakeFiles
+*.out
+xattr_util
+.idea/
+Makefile
