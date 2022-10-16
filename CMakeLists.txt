@@ -5,5 +5,4 @@ set(CMAKE_C_STANDARD 11)
 
 set(CMAKE_C_FLAGS "-g")
 
-add_executable(xattr_util
-        main.c subproc.h subproc.c)
+add_executable(main.c subproc.h subproc.c split.c split.h)

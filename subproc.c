@@ -36,14 +36,10 @@ struct proc_result *get_proc_result(char *cmd, char *args[], int argc)
         char **arguments = calloc(sizeof(char *), argc + 2);
 
         arguments[0] = cmd;
-        printf("0: %s\n", arguments[0]);
         for (int i = 0; i < argc; i++)
-        {
             arguments[i + 1] = args[i];
-            printf("%d: %s\n", i, arguments[i + 1]);
-        }
+
         arguments[argc + 1] = NULL;
-        printf("%d: %s\n", argc + 1, arguments[argc + 1]);
 
         close(STDOUT_FILENO);
         dup(p[1]);
