@@ -4,6 +4,7 @@
 
 #include "subproc.h"
 #include <signal.h>
+#include <errno.h>
 
 #ifdef __APPLE__
 typedef struct fd_set fd_set;
@@ -47,6 +48,8 @@ struct proc_result *get_proc_result(char *cmd, char *args[], int argc)
         dup(p[1]);
 
         execvp(cmd, arguments);
+        perror(strerror(errno));
+        free(arguments);
     }
     else
     {
