@@ -12,7 +12,6 @@ int main (int argc, char const* argv[])
 
     char* args[] = { "main.py" };
     struct proc_result* attrs = get_proc_result ("xattr", args, 1);
-    free_proc_result(attrs);
-
     printf ("%s\n", attrs->output);
+    free_proc_result(attrs);
 }
