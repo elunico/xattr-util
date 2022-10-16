@@ -11,6 +11,8 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <sys/select.h>
+#include <sys/types.h>
 
 #define NEEDS_FREE
 

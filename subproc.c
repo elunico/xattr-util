@@ -5,6 +5,10 @@
 #include "subproc.h"
 #include <signal.h>
 
+#ifdef __APPLE__
+typedef struct fd_set fd_set;
+#endif
+
 static int child_living = 0;
 
 void child_handler (int sig)
@@ -14,7 +18,7 @@ void child_handler (int sig)
 
 struct proc_result* get_proc_result (char* cmd, char* args[], int argc)
 {
-    int p[2], retval;
+    int p[2] = {0, 0}, retval = -1;
     pid_t pid;
     int const BUF_SIZE = 65535;
     char* buf = calloc (sizeof (char), ( BUF_SIZE + 1 ));
@@ -50,7 +54,7 @@ struct proc_result* get_proc_result (char* cmd, char* args[], int argc)
 
     } else
     {
-        struct fd_set desc = { 0 };
+        fd_set desc = { 0 };
         FD_SET(p[0], &desc);
 
         struct timeval tmout = { 0 };
@@ -62,6 +66,7 @@ struct proc_result* get_proc_result (char* cmd, char* args[], int argc)
             {
                 char* newone = calloc (sizeof (char), curSize * 2);
                 memcpy(newone, complete_output, curSize);
+                free(complete_output);
                 curSize *= 2;
                 complete_output = newone;
             }
@@ -77,8 +82,9 @@ struct proc_result* get_proc_result (char* cmd, char* args[], int argc)
         waitpid (pid, &retval, WNOHANG);
     }
     struct proc_result* result = calloc (sizeof (struct proc_result), 1);
-    result->output = buf;
+    result->output = complete_output;
     result->retval = retval;
+    free(buf);
     return result;
 }
 

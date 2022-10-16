@@ -8,3 +8,4 @@ CMakeFiles
 xattr_util
 .idea/
 Makefile
+build/
