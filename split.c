@@ -16,6 +16,9 @@ struct split_result* /* NEEDS FREE */ split (char* string, char delim, int limit
     char* start = string;
     while (*string)
     {
+        if (count == limit)
+            break;
+        
         if (*string == delim)
         {
             char old = *string;

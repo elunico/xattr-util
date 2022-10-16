@@ -48,7 +48,7 @@ struct proc_result *get_proc_result(char *cmd, char *args[], int argc)
         dup(p[1]);
 
         execvp(cmd, arguments);
-        perror(strerror(errno));
+        perror("Failed exec command");
         free(arguments);
     }
     else
