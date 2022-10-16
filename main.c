@@ -5,11 +5,12 @@
 #include <stdio.h>
 #include "subproc.h"
 
-int main(int argc, char const *argv[]) {
-    signal(SIGCHLD, child_handler);
+int main (int argc, char const* argv[])
+{
+    signal (SIGCHLD, child_handler);
 
-    char *args[] = {"main.py"};
-    struct proc_result *attrs = get_proc_result("xattr", args, 1);
+    char* args[] = { "main.py" };
+    struct proc_result* attrs = get_proc_result ("xattr", args, 1);
 
-    printf("%s\n", attrs->output);
+    printf ("%s\n", attrs->output);
 }

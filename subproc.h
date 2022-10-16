@@ -14,15 +14,16 @@
 
 #define NEEDS_FREE
 
-struct proc_result {
+struct proc_result
+{
     char* output;
     int retval;
 };
 
-void child_handler( int sig );
+void child_handler (int sig);
 
-struct proc_result* NEEDS_FREE get_proc_result( char* output, char* args[], int argc );
+struct proc_result* NEEDS_FREE get_proc_result (char* output, char* args[], int argc);
 
-void free_proc_result( struct proc_result* result );
+void free_proc_result (struct proc_result* result);
 
 #endif //XATTR_UTIL_SUBPROC_H
