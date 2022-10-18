@@ -7,7 +7,7 @@
 
 struct split_result_element
 {
-    char *string;
+    char* string;
     int index;
     struct split_result_element* next;
 };
@@ -21,6 +21,7 @@ struct split_result
 };
 
 struct split_result* /* NEEDS FREE */ split (char* string, char delim, int limit);
+
 void free_split_result (struct split_result* result);
 
 #endif //XATTR_UTIL_TRIM_H

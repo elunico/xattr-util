@@ -18,7 +18,7 @@ struct split_result* /* NEEDS FREE */ split (char* string, char delim, int limit
     {
         if (count == limit)
             break;
-        
+
         if (*string == delim)
         {
             char old = *string;
@@ -36,7 +36,8 @@ struct split_result* /* NEEDS FREE */ split (char* string, char delim, int limit
             {
                 result->head = elm;
                 result->tail = elm;
-            } else
+            }
+            else
             {
                 result->tail->next = elm;
                 result->tail = result->tail->next;
@@ -53,13 +54,15 @@ struct split_result* /* NEEDS FREE */ split (char* string, char delim, int limit
 void free_split_result (struct split_result* result)
 {
     struct split_result_element* start = result->head;
-    while (start!= NULL) {
-        if (start->string != NULL) {
-            free(start->string);
+    while (start != NULL)
+    {
+        if (start->string != NULL)
+        {
+            free (start->string);
         }
         struct split_result_element* next = start->next;
-        free(start);
+        free (start);
         start = next;
     }
-    free(result);
+    free (result);
 }

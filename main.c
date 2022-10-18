@@ -12,7 +12,7 @@ int main (int argc, char const* argv[])
 
     char* args[] = { "giant-file.txt" };
     struct proc_result* attrs = get_proc_result ("cat", args, 1);
-    puts(attrs->output); // ("%s\n", attrs->output);
+    puts (attrs->output); // ("%s\n", attrs->output);
 
 //    struct split_result* result = split (attrs->output, '\n', -1);
 
