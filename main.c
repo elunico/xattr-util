@@ -12,18 +12,13 @@ int main (int argc, char const* argv[])
 
     char* args[] = { "giant-file.txt" };
     struct proc_result* attrs = get_proc_result ("cat", args, 1);
-    puts (attrs->output); // ("%s\n", attrs->output);
+    struct split_result* result = split (attrs->output, '\n', -1);
 
-//    struct split_result* result = split (attrs->output, '\n', -1);
-
-//    struct split_result_element* tok = result->head;
-//    while (tok != NULL)
-//    {
-//        printf ("%s, ", tok->string);
-//        tok = tok->next;
-//    }
+    struct split_result_element* tok;
+    while (( tok = split_result_next (result)) != NULL)
+        printf ("%s, ", tok->string);
 
     free_proc_result (attrs);
-//    free_split_result (result);
+    free_split_result (result);
 
 }

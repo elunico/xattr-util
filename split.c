@@ -51,15 +51,24 @@ struct split_result* /* NEEDS FREE */ split (char* string, char delim, int limit
     return result;
 }
 
+
+struct split_result_element* split_result_next (struct split_result* result)
+{
+    if (result->current == NULL)
+        result->current = result->head;
+    else
+        result->current = result->current->next;
+    return result->current;
+}
+
 void free_split_result (struct split_result* result)
 {
     struct split_result_element* start = result->head;
     while (start != NULL)
     {
         if (start->string != NULL)
-        {
             free (start->string);
-        }
+
         struct split_result_element* next = start->next;
         free (start);
         start = next;
